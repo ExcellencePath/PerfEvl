@@ -181,7 +181,7 @@ body{font-family:"Cairo",sans-serif;background:var(--paper);color:var(--ink);min
 <!-- LOADING -->
 <div id="page-loading" class="page on">
   <div class="ld-logo">
-    <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="مدارس الفرسان"/>
+    <div style="font-family:'Tajawal',sans-serif;font-size:1.3rem;font-weight:900;color:var(--purple)">مدارس الفرسان الأهلية</div>
     <div class="ld-sub">منصة شواهد الأداء</div>
   </div>
   <div class="spin"></div>
@@ -216,7 +216,11 @@ body{font-family:"Cairo",sans-serif;background:var(--paper);color:var(--ink);min
         <div class="ph-hint">⚠️ أدخل الأرقام بالإنجليزية فقط (0-9)</div>
       </div>
       <div class="fg"><label>كلمة المرور</label><input type="password" id="rg-p" placeholder="٦ أحرف على الأقل"/></div>
-      <div class="fg"><label>الدور</label><select id="rg-r"><option value="teacher">معلم</option><option value="admin">مدير</option></select></div>
+      <div class="fg"><label>الدور</label><select id="rg-r" onchange="toggleAdminCode()"><option value="teacher">معلم</option><option value="admin">مدير</option></select></div>
+      <div class="fg" id="admin-code-wrap" style="display:none">
+        <label>رمز المدير السري</label>
+        <input type="password" id="rg-code" placeholder="أدخل الرمز السري"/>
+      </div>
       <button class="btn-m" onclick="doReg()"><span id="rg-t">إنشاء حساب</span></button>
     </div>
     <div class="amsg" id="amsg"></div>
@@ -227,7 +231,6 @@ body{font-family:"Cairo",sans-serif;background:var(--paper);color:var(--ink);min
 <div id="page-teacher" class="page">
   <nav class="nav">
     <div class="nb">
-      <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="الفرسان" class="nav-logo"/>
       <div class="nb-text">
         <div class="nb-title">مدارس الفرسان الأهلية</div>
         <div class="nb-sub">شواهد الأداء</div>
@@ -250,7 +253,6 @@ body{font-family:"Cairo",sans-serif;background:var(--paper);color:var(--ink);min
 <div id="page-admin" class="page">
   <nav class="nav">
     <div class="nb">
-      <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="الفرسان" class="nav-logo"/>
       <div class="nb-text">
         <div class="nb-title">مدارس الفرسان الأهلية</div>
         <div class="nb-sub">لوحة المدير</div>
@@ -355,6 +357,12 @@ function showTab(t){
   document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',(t==='li'&&i===0)||(t==='rg'&&i===1)));
   msg('');
 }
+function toggleAdminCode(){
+  const role = document.getElementById('rg-r').value;
+  document.getElementById('admin-code-wrap').style.display = role === 'admin' ? '' : 'none';
+  document.getElementById('rg-code').value = '';
+}
+
 function msg(m,ok=false){const e=document.getElementById('amsg');e.textContent=m;e.className='amsg'+(m?(ok?' ok':' err'):'');}
 function ea(e){
   if(!e)return'';const m=e.message||String(e);
@@ -383,6 +391,11 @@ async function doReg(){
   const pass=document.getElementById('rg-p').value;
   const role=document.getElementById('rg-r').value;
   if(!name||!ph||!pass)return msg('يرجى ملء جميع الحقول');
+  if(role==='admin'){
+    const code=document.getElementById('rg-code').value;
+    if(!code)return msg('يرجى إدخال رمز المدير السري');
+    if(code!=='Boss21426')return msg('رمز المدير السري غير صحيح');
+  }
   if(ph.length<9)return msg('رقم الجوال يجب أن يكون 9 أرقام بالإنجليزية');
   if(pass.length<6)return msg('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
   const btn=document.getElementById('rg-t');btn.innerHTML='<span class="spin-sm"></span>';
