@@ -591,5 +591,26 @@ function toast(m,type=''){const t=document.getElementById('toast');t.textContent
   }catch(e){}
 })();
 </script>
+<style>
+.footer{text-align:center;padding:1.5rem;margin-top:1rem}
+.tiktok-btn{display:inline-flex;align-items:center;gap:.4rem;color:#aaa;text-decoration:none;font-family:'Cairo',sans-serif;font-size:.78rem;transition:color .2s}
+.tiktok-btn:hover{color:#333}
+.tiktok-icon{width:14px;height:14px;opacity:.5}
+</style>
+<div class="footer" id="site-footer" style="display:none">
+  <a class="tiktok-btn" href="https://www.tiktok.com/@raa.file" target="_blank">
+    <svg class="tiktok-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/>
+    </svg>
+    @raa.file
+  </a>
+</div>
+<script>
+const _origGo = go;
+go = function(p){
+  _origGo(p);
+  document.getElementById('site-footer').style.display = p === 'auth' || p === 'loading' ? 'none' : 'block';
+};
+</script>
 </body>
 </html>
