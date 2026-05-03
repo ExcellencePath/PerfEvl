@@ -419,7 +419,7 @@ async function doReset(){
     // إذا نجح الدخول يعني كلمة المرور صحيحة - نحدثها
     const{error:e2}=await sb.auth.updateUser({password:pass});
     if(e2){fmsg.textContent='حدث خطأ، حاول مجدداً';fmsg.className='amsg err';}
-    else{fmsg.textContent='✅ تم تحديث كلمة المرور بنجاح!';fmsg.className='amsg ok';setTimeout(()=>{closeForgot();await boot(data.user);},1500);}
+    else{fmsg.textContent='✅ تم تحديث كلمة المرور بنجاح!';fmsg.className='amsg ok';setTimeout(async()=>{closeForgot();await boot(data.user);},1500);}
   }
   btn.innerHTML='تغيير كلمة المرور';btn.disabled=false;
 }
@@ -567,21 +567,15 @@ function closeLb(){document.getElementById('lb').classList.remove('open');}
 function toast(m,type=''){const t=document.getElementById('toast');t.textContent=m;t.className='toast show '+type;setTimeout(()=>t.className='toast',3500);}
 
 (async()=>{
-  // timeout بعد 5 ثواني
-  const timeout = setTimeout(()=>{
-    document.getElementById('page-loading').classList.remove('on');
-    go('auth');
-  }, 5000);
+  const hide=()=>document.getElementById('page-loading').classList.remove('on');
+  // روح لصفحة التسجيل فوراً وخلي الجلسة تتحمل في الخلفية
+  hide();
+  go('auth');
+  // تحقق من الجلسة في الخلفية
   try{
     const{data:{session}}=await sb.auth.getSession();
-    clearTimeout(timeout);
-    if(session?.user){await boot(session.user);}
-    else{document.getElementById('page-loading').classList.remove('on');go('auth');}
-  }catch(e){
-    clearTimeout(timeout);
-    document.getElementById('page-loading').classList.remove('on');
-    go('auth');
-  }
+    if(session?.user) await boot(session.user);
+  }catch(e){}
 })();
 </script>
 </body>
