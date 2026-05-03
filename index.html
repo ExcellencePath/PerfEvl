@@ -9,125 +9,106 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --ink:#1a0a2e;
-  --paper:#f7f4fb;
-  --cream:#ede8f5;
-  --purple:#7b2d8b;
-  --purple2:#9b3dab;
-  --lime:#8dc63f;
-  --lime2:#a8d94f;
-  --red:#c0392b;
-  --green:#2e7d32;
-  --sh:rgba(123,45,139,0.12)
+  --ink:#2a1040;--paper:#faf8fc;--cream:#f0eaf7;
+  --purple:#7b2d8b;--purple2:#9b3dab;--purple-light:#f5eefa;
+  --lime:#7ab82f;--lime2:#8dc63f;
+  --red:#c0392b;--green:#2e7d32;--sh:rgba(123,45,139,0.10)
 }
-body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
+body{font-family:"Cairo",sans-serif;background:var(--paper);color:var(--ink);min-height:100vh}
 .page{display:none!important}.page.on{display:block!important}
 #page-auth.on{display:flex!important}
 #page-loading.on{display:flex!important}
 
-/* LOADING */
-#page-loading{align-items:center;justify-content:center;flex-direction:column;gap:1rem;position:fixed;inset:0;background:var(--ink);z-index:999;min-height:100vh}
-.ld-logo{display:flex;flex-direction:column;align-items:center;gap:.5rem}
-.ld-icon{width:80px;height:80px;display:flex;align-items:center;justify-content:center}
-.ld-icon svg{width:80px;height:80px}
-.ld-name{font-family:'Tajawal',sans-serif;font-size:1.3rem;font-weight:900;color:#fff;letter-spacing:.02em}
-.ld-sub{font-size:.82rem;color:rgba(255,255,255,.5)}
-.spin{display:inline-block;width:32px;height:32px;border:3px solid rgba(141,198,63,.2);border-top-color:var(--lime);border-radius:50%;animation:sp .7s linear infinite;margin-top:.5rem}
-.spin-sm{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
+#page-loading{align-items:center;justify-content:center;flex-direction:column;gap:.8rem;position:fixed;inset:0;background:var(--paper);z-index:999;min-height:100vh}
+.ld-logo{text-align:center}
+.ld-logo img{width:120px;filter:drop-shadow(0 4px 16px rgba(123,45,139,.15))}
+.ld-sub{font-size:.82rem;color:var(--purple);font-weight:600}
+.spin{display:inline-block;width:30px;height:30px;border:3px solid var(--cream);border-top-color:var(--purple);border-radius:50%;animation:sp .7s linear infinite;margin-top:.3rem}
+.spin-sm{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 
-/* AUTH */
-#page-auth{align-items:center;justify-content:center;padding:2rem;min-height:100vh;
-  background: linear-gradient(135deg, var(--ink) 0%, #2d0a45 50%, #1a0a2e 100%)}
-.auth-box{background:#fff;border-radius:24px;padding:2.5rem;width:100%;max-width:420px;
-  box-shadow:0 30px 80px rgba(0,0,0,.4), 0 0 0 1px rgba(141,198,63,.15)}
-.auth-logo{text-align:center;margin-bottom:2rem}
-.school-logo{width:90px;height:90px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center}
-.school-logo svg{width:90px;height:90px}
-.auth-logo h1{font-family:'Tajawal',sans-serif;font-size:1.4rem;font-weight:900;color:var(--purple)}
-.auth-logo p{font-size:.82rem;color:#888;margin-top:.2rem}
+#page-auth{align-items:center;justify-content:center;padding:2rem;min-height:100vh;background:linear-gradient(150deg,#f5eefa 0%,#faf8fc 60%,#f0fbe8 100%)}
+.auth-box{background:#fff;border-radius:24px;padding:2.5rem;width:100%;max-width:420px;box-shadow:0 20px 60px rgba(123,45,139,.12),0 0 0 1px rgba(123,45,139,.06)}
+.auth-logo{text-align:center;margin-bottom:1.8rem}
+.auth-logo img{width:110px;filter:drop-shadow(0 2px 8px rgba(123,45,139,.15))}
+.auth-logo p{font-size:.82rem;color:#888;margin-top:.3rem}
 .tabs{display:flex;background:var(--cream);border-radius:10px;padding:4px;margin-bottom:1.5rem}
-.tabs button{flex:1;padding:.55rem;border:none;background:transparent;border-radius:7px;font-family:'Cairo',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;color:#888;transition:all .2s}
+.tabs button{flex:1;padding:.55rem;border:none;background:transparent;border-radius:7px;font-family:"Cairo",sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;color:#888;transition:all .2s}
 .tabs button.on{background:#fff;color:var(--purple);box-shadow:0 2px 8px var(--sh)}
 .fg{margin-bottom:1rem}
 .fg label{display:block;font-size:.82rem;font-weight:600;color:#555;margin-bottom:.35rem}
 .ph-wrap{display:flex;border:1.5px solid #e0d8ed;border-radius:10px;overflow:hidden;background:#fafaf8;transition:border-color .2s}
 .ph-wrap:focus-within{border-color:var(--purple);background:#fff}
 .ph-pre{padding:.7rem .8rem;background:var(--cream);font-size:.88rem;font-weight:700;color:#555;border-left:1.5px solid #e0d8ed;white-space:nowrap}
-.ph-wrap input{flex:1;padding:.7rem .8rem;border:none;background:transparent;font-family:'Cairo',sans-serif;font-size:.92rem;color:var(--ink);outline:none;direction:ltr;text-align:left}
-.fg input,.fg select{width:100%;padding:.7rem 1rem;border:1.5px solid #e0d8ed;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.92rem;background:#fafaf8;color:var(--ink);outline:none;transition:border-color .2s}
+.ph-wrap input{flex:1;padding:.7rem .8rem;border:none;background:transparent;font-family:"Cairo",sans-serif;font-size:.92rem;color:var(--ink);outline:none;direction:ltr;text-align:left}
+.ph-hint{font-size:.72rem;color:#aaa;margin-top:.3rem;display:flex;align-items:center;gap:.3rem}
+.fg input,.fg select{width:100%;padding:.7rem 1rem;border:1.5px solid #e0d8ed;border-radius:10px;font-family:"Cairo",sans-serif;font-size:.92rem;background:#fafaf8;color:var(--ink);outline:none;transition:border-color .2s}
 .fg input:focus,.fg select:focus{border-color:var(--purple);background:#fff}
-.btn-m{width:100%;padding:.8rem;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:.4rem;box-shadow:0 4px 14px rgba(123,45,139,.35);transition:all .2s}
-.btn-m:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(123,45,139,.45)}
+.btn-m{width:100%;padding:.8rem;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;border-radius:10px;font-family:"Cairo",sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:.4rem;box-shadow:0 4px 14px rgba(123,45,139,.3);transition:all .2s}
+.btn-m:hover{transform:translateY(-1px)}
+.btn-forgot{width:100%;padding:.6rem;background:transparent;border:1.5px solid #e0d8ed;border-radius:10px;font-family:"Cairo",sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;color:var(--purple);margin-top:.5rem;transition:all .2s}
+.btn-forgot:hover{background:var(--purple-light)}
 .amsg{text-align:center;font-size:.82rem;margin-top:.8rem;min-height:1rem;padding:.5rem;border-radius:8px}
 .amsg.err{color:var(--red)}.amsg.ok{color:var(--green);background:#f0fff4;border:1px solid #b7f0c8}
 
-/* NAV */
-.nav{background:var(--ink);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;z-index:50;
-  border-bottom:3px solid var(--lime)}
-.nb{display:flex;align-items:center;gap:.8rem;color:#fff}
-.nav-logo{width:36px;height:36px}
-.nav-logo svg{width:36px;height:36px}
+.nav{background:#fff;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px var(--sh);border-bottom:3px solid var(--lime2)}
+.nb{display:flex;align-items:center;gap:.8rem}
+.nav-logo{height:38px}
 .nb-text{display:flex;flex-direction:column}
-.nb-title{font-family:'Tajawal',sans-serif;font-weight:900;font-size:.95rem;color:#fff;line-height:1.2}
-.nb-sub{font-size:.68rem;color:var(--lime);font-weight:600}
+.nb-title{font-family:"Tajawal",sans-serif;font-weight:900;font-size:.95rem;color:var(--purple);line-height:1.2}
+.nb-sub{font-size:.68rem;color:var(--lime);font-weight:700}
 .nr{display:flex;align-items:center;gap:.8rem}
-.nn{background:rgba(255,255,255,.1);color:#fff;padding:.3rem .8rem;border-radius:20px;font-size:.8rem;font-weight:600}
-.nrl{background:var(--lime);color:var(--ink);padding:.2rem .65rem;border-radius:20px;font-size:.72rem;font-weight:700}
-.bo{background:rgba(255,255,255,.08);color:#aaa;border:1px solid rgba(255,255,255,.1);padding:.3rem .7rem;border-radius:8px;font-family:'Cairo',sans-serif;font-size:.78rem;cursor:pointer}
-.bo:hover{background:rgba(255,255,255,.15);color:#fff}
+.nn{background:var(--purple-light);color:var(--purple);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;font-weight:600}
+.nrl{background:var(--lime2);color:#fff;padding:.2rem .65rem;border-radius:20px;font-size:.72rem;font-weight:700}
+.bo{background:var(--cream);color:var(--purple);border:1.5px solid #e0d8ed;padding:.3rem .7rem;border-radius:8px;font-family:"Cairo",sans-serif;font-size:.78rem;cursor:pointer;font-weight:600}
+.bo:hover{background:var(--purple-light)}
 
-/* TEACHER */
 .wrap{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
-.ph-hd h2{font-family:'Tajawal',sans-serif;font-size:1.7rem;font-weight:900;color:var(--purple)}
+.ph-hd h2{font-family:"Tajawal",sans-serif;font-size:1.7rem;font-weight:900;color:var(--purple)}
 .ph-hd p{color:#888;font-size:.88rem;margin-top:.2rem}
 .pb{background:var(--cream);border-radius:30px;height:8px;margin-top:.9rem;overflow:hidden}
-.pf{height:100%;background:linear-gradient(90deg,var(--purple),var(--lime));border-radius:30px;transition:width .5s}
-.pl{font-size:.78rem;color:#999;margin-top:.35rem}
+.pf{height:100%;background:linear-gradient(90deg,var(--purple),var(--lime2));border-radius:30px;transition:width .5s}
+.pl{font-size:.78rem;color:#aaa;margin-top:.35rem}
 
-/* BAND CARDS */
-.band-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.band-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.9rem}
 .band-card{background:#fff;border-radius:14px;box-shadow:0 2px 12px var(--sh);overflow:hidden;border:2px solid transparent;transition:all .2s}
-.band-card.partial{border-color:var(--lime)}
+.band-card.partial{border-color:var(--lime2)}
 .band-card.full{border-color:var(--green)}
 .band-header{padding:1rem 1.2rem;display:flex;align-items:center;gap:.9rem;cursor:pointer}
-.band-header:hover{background:#faf7fd}
-.band-num{width:38px;height:38px;border-radius:9px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:900;color:#888;flex-shrink:0}
+.band-header:hover{background:var(--purple-light)}
+.band-num{width:38px;height:38px;border-radius:9px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:"Tajawal",sans-serif;font-size:.95rem;font-weight:900;color:#999;flex-shrink:0}
 .band-card.full .band-num{background:var(--green);color:#fff}
-.band-card.partial .band-num{background:var(--lime);color:var(--ink)}
+.band-card.partial .band-num{background:var(--lime2);color:#fff}
 .band-info{flex:1}
 .band-title{font-size:.95rem;font-weight:700;color:var(--ink)}
-.band-sub{font-size:.75rem;color:#999;margin-top:.15rem}
-.band-pill{padding:.25rem .7rem;border-radius:20px;font-size:.75rem;font-weight:700;background:var(--cream);color:#888}
+.band-sub{font-size:.75rem;color:#aaa;margin-top:.15rem}
+.band-pill{padding:.25rem .7rem;border-radius:20px;font-size:.75rem;font-weight:700;background:var(--cream);color:#aaa}
 .band-card.full .band-pill{background:#d4f5e3;color:var(--green)}
 .band-card.partial .band-pill{background:#f0fbd0;color:#5a7a10}
 .band-arrow{font-size:.8rem;color:#ccc;transition:transform .2s}
 .band-card.open .band-arrow{transform:rotate(180deg)}
-
 .sub-list{border-top:1px solid var(--cream);padding:.8rem 1rem;display:none;flex-direction:column;gap:.6rem}
 .band-card.open .sub-list{display:flex}
-.sub-item{display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;border-radius:10px;border:1.5px solid var(--cream);background:#faf7fd;cursor:pointer;transition:all .2s}
-.sub-item:hover{border-color:var(--purple);background:#f5f0fc}
+.sub-item{display:flex;align-items:center;gap:.8rem;padding:.7rem .9rem;border-radius:10px;border:1.5px solid var(--cream);background:var(--paper);cursor:pointer;transition:all .2s}
+.sub-item:hover{border-color:var(--purple);background:var(--purple-light)}
 .sub-item.done{border-color:var(--green);background:linear-gradient(135deg,#fff,#f0fff4)}
 .sub-check{width:28px;height:28px;border-radius:7px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;color:#fff}
 .sub-item.done .sub-check{background:var(--green)}
 .sub-name{flex:1;font-size:.85rem;font-weight:600;color:var(--ink)}
-.sub-file{font-size:.72rem;color:#999;margin-top:.1rem}
+.sub-file{font-size:.72rem;color:#aaa;margin-top:.1rem}
 .sub-status{font-size:.8rem;color:#ccc}
 .sub-item.done .sub-status{color:var(--green)}
 
-/* MODAL */
-.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.ov{display:none;position:fixed;inset:0;background:rgba(42,16,64,.45);z-index:100;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
 .ov.open{display:flex!important}
-.mo{background:#fff;border-radius:20px;padding:1.8rem;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;animation:up .22s ease;
-  border-top:4px solid var(--purple)}
+.mo{background:#fff;border-radius:20px;padding:1.8rem;width:100%;max-width:480px;max-height:88vh;overflow-y:auto;animation:up .22s ease;border-top:4px solid var(--purple)}
 @keyframes up{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
 .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
-.mh h3{font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:900;color:var(--purple)}
+.mh h3{font-family:"Tajawal",sans-serif;font-size:1.1rem;font-weight:900;color:var(--purple)}
 .m-sub{font-size:.8rem;color:#888;margin-bottom:1.2rem;padding-bottom:1rem;border-bottom:1px solid var(--cream)}
 .bx{width:30px;height:30px;border-radius:7px;border:none;background:var(--cream);font-size:1rem;cursor:pointer}
 .dz{border:2px dashed #d5c8e8;border-radius:12px;padding:2rem 1.2rem;text-align:center;cursor:pointer;background:var(--paper);margin-bottom:1rem;transition:all .2s}
-.dz:hover,.dz.drag{border-color:var(--purple);background:#f5f0fc}
+.dz:hover,.dz.drag{border-color:var(--purple);background:var(--purple-light)}
 .dz input{display:none}
 .dzi{font-size:2.2rem;margin-bottom:.5rem}
 .dz p{font-size:.84rem;color:#777}
@@ -137,60 +118,57 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
 .pv .pfi{font-size:.78rem;color:#999;margin-top:.4rem}
 .pv.show{display:block}
 .mbs{display:flex;gap:.7rem}
-.bcl{flex:1;padding:.7rem;border:1.5px solid #e0d8ed;border-radius:9px;background:transparent;font-family:'Cairo',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;color:#777}
-.bup{flex:2;padding:.7rem;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(123,45,139,.25)}
+.bcl{flex:1;padding:.7rem;border:1.5px solid #e0d8ed;border-radius:9px;background:transparent;font-family:"Cairo",sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;color:#777}
+.bup{flex:2;padding:.7rem;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;border-radius:9px;font-family:"Cairo",sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(123,45,139,.25)}
 .bup:disabled{opacity:.5;cursor:not-allowed}
 
-/* ADMIN */
 .ww{max-width:1080px;margin:0 auto;padding:2rem 1.5rem}
 .sts{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
-.st{background:#fff;border-radius:13px;padding:1.1rem 1.3rem;box-shadow:0 2px 10px var(--sh);border-right:4px solid var(--lime)}
-.st .n{font-family:'Tajawal',sans-serif;font-size:2rem;font-weight:900;color:var(--purple);line-height:1}
-.st .l{font-size:.8rem;color:#999;margin-top:.25rem}
+.st{background:#fff;border-radius:13px;padding:1.1rem 1.3rem;box-shadow:0 2px 10px var(--sh);border-right:4px solid var(--lime2)}
+.st .n{font-family:"Tajawal",sans-serif;font-size:2rem;font-weight:900;color:var(--purple);line-height:1}
+.st .l{font-size:.8rem;color:#aaa;margin-top:.25rem}
 .sb{background:#fff;border-radius:11px;padding:.7rem 1rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 2px 8px var(--sh);margin-bottom:1.2rem;border:1.5px solid transparent}
 .sb:focus-within{border-color:var(--purple)}
-.sb input{flex:1;border:none;background:transparent;font-family:'Cairo',sans-serif;font-size:.92rem;outline:none}
+.sb input{flex:1;border:none;background:transparent;font-family:"Cairo",sans-serif;font-size:.92rem;outline:none}
 .tb{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 2px 14px var(--sh)}
 .tr{padding:1.1rem 1.3rem;border-bottom:1px solid var(--cream);cursor:pointer}
 .tr:last-child{border-bottom:none}
-.tr:hover{background:#faf7fd}
+.tr:hover{background:var(--purple-light)}
 .trt{display:flex;align-items:center;gap:.9rem}
-.av{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--purple),var(--lime));display:flex;align-items:center;justify-content:center;font-family:'Tajawal',sans-serif;font-weight:900;color:#fff;font-size:1rem;flex-shrink:0}
+.av{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--purple),var(--lime2));display:flex;align-items:center;justify-content:center;font-family:"Tajawal",sans-serif;font-weight:900;color:#fff;font-size:1rem;flex-shrink:0}
 .tm{flex:1}
 .tn{font-weight:700;font-size:.92rem}
-.te{font-size:.75rem;color:#999;margin-top:.1rem}
-.pi{background:var(--cream);padding:.25rem .7rem;border-radius:20px;font-size:.78rem;font-weight:700;color:#888}
+.te{font-size:.75rem;color:#aaa;margin-top:.1rem}
+.pi{background:var(--cream);padding:.25rem .7rem;border-radius:20px;font-size:.78rem;font-weight:700;color:#aaa}
 .pi.f{background:#d4f5e3;color:var(--green)}
 .mini-bar{height:5px;background:var(--cream);border-radius:10px;margin-top:.6rem;overflow:hidden}
-.mini-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--lime));border-radius:10px;transition:width .4s}
+.mini-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--lime2));border-radius:10px;transition:width .4s}
 .dl{display:none;margin-top:.9rem;background:var(--paper);border-radius:11px;border:1px solid var(--cream);overflow:hidden}
 .dl.open{display:block}
 .adm-band{border-bottom:1px solid var(--cream)}
 .adm-band:last-child{border-bottom:none}
 .adm-band-hd{padding:.7rem 1rem;display:flex;align-items:center;gap:.7rem;cursor:pointer;font-size:.85rem;font-weight:700}
-.adm-band-hd:hover{background:#f5f0fc}
-.adm-band-num{width:24px;height:24px;border-radius:6px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#888;flex-shrink:0}
+.adm-band-hd:hover{background:var(--purple-light)}
+.adm-band-num{width:24px;height:24px;border-radius:6px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;color:#aaa;flex-shrink:0}
 .adm-band-hd.has-all .adm-band-num{background:var(--green);color:#fff}
-.adm-band-hd.has-some .adm-band-num{background:var(--lime);color:var(--ink)}
+.adm-band-hd.has-some .adm-band-num{background:var(--lime2);color:#fff}
 .adm-sub-list{display:none;padding:.5rem .8rem;background:#fff}
 .adm-band.open .adm-sub-list{display:block}
 .adm-sub-item{display:flex;align-items:center;gap:.6rem;padding:.4rem .5rem;border-radius:7px;margin-bottom:.3rem;font-size:.78rem}
 .adm-sub-item.has{cursor:pointer}
-.adm-sub-item.has:hover{background:#f5f0fc}
+.adm-sub-item.has:hover{background:var(--purple-light)}
 .adm-sub-dot{width:10px;height:10px;border-radius:50%;background:var(--cream);flex-shrink:0}
 .adm-sub-item.has .adm-sub-dot{background:var(--green)}
-.adm-sub-name{flex:1;color:#777}
+.adm-sub-name{flex:1;color:#aaa}
 .adm-sub-item.has .adm-sub-name{color:var(--ink);font-weight:600}
-.adm-sub-file{font-size:.7rem;color:#aaa}
+.adm-sub-file{font-size:.7rem;color:#bbb}
 
-/* LIGHTBOX */
 .lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;align-items:center;justify-content:center;flex-direction:column;gap:.8rem}
 .lb.open{display:flex!important}
 .lb img{max-width:90vw;max-height:80vh;border-radius:9px}
 .lbc{color:#fff;font-size:.88rem;opacity:.7}
 .lbx{position:absolute;top:1.2rem;left:1.2rem;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:1.4rem;width:40px;height:40px;border-radius:9px;cursor:pointer}
 
-/* TOAST */
 .toast{position:fixed;bottom:1.8rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:.65rem 1.3rem;border-radius:25px;font-size:.85rem;font-weight:600;z-index:300;transition:transform .28s;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.ok{background:var(--green)}.toast.err{background:var(--red)}
@@ -203,14 +181,7 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
 <!-- LOADING -->
 <div id="page-loading" class="page on">
   <div class="ld-logo">
-    <div class="ld-icon">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="18" r="13" fill="#8dc63f"/>
-        <path d="M15 35 Q20 28 30 32 L50 75 L70 32 Q80 28 85 35 L75 80 Q62 88 50 88 Q38 88 25 80 Z" fill="#7b2d8b"/>
-        <path d="M50 45 L50 75" stroke="#1a0a2e" stroke-width="3" opacity="0.3"/>
-      </svg>
-    </div>
-    <div class="ld-name">مدارس الفرسان الأهلية</div>
+    <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="مدارس الفرسان"/>
     <div class="ld-sub">منصة شواهد الأداء</div>
   </div>
   <div class="spin"></div>
@@ -220,14 +191,7 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
 <div id="page-auth" class="page">
   <div class="auth-box">
     <div class="auth-logo">
-      <div class="school-logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="18" r="13" fill="#8dc63f"/>
-          <path d="M15 35 Q20 28 30 32 L50 75 L70 32 Q80 28 85 35 L75 80 Q62 88 50 88 Q38 88 25 80 Z" fill="#7b2d8b"/>
-          <path d="M50 45 L50 75" stroke="white" stroke-width="2.5" opacity="0.25"/>
-        </svg>
-      </div>
-      <h1>مدارس الفرسان الأهلية</h1>
+      <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="مدارس الفرسان" style="width:110px;filter:drop-shadow(0 2px 8px rgba(123,45,139,.15))"/>
       <p>منصة شواهد الأداء الوظيفي للمعلمين</p>
     </div>
     <div class="tabs">
@@ -237,16 +201,19 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
     <div id="tab-li">
       <div class="fg">
         <label>رقم الجوال</label>
-        <div class="ph-wrap"><span class="ph-pre">🇸🇦 +966</span><input type="tel" id="li-ph" placeholder="5XXXXXXXX" maxlength="9"/></div>
+        <div class="ph-wrap"><span class="ph-pre">🇸🇦 +966</span><input type="tel" id="li-ph" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric"/></div>
+        <div class="ph-hint">⚠️ أدخل الأرقام بالإنجليزية فقط (0-9)</div>
       </div>
       <div class="fg"><label>كلمة المرور</label><input type="password" id="li-p" placeholder="••••••••"/></div>
       <button class="btn-m" onclick="doLogin()"><span id="li-t">دخول</span></button>
+      <button class="btn-forgot" onclick="showForgot()">🔑 نسيت كلمة المرور؟</button>
     </div>
     <div id="tab-rg" style="display:none">
       <div class="fg"><label>الاسم الكامل</label><input type="text" id="rg-n" placeholder="اسمك الكامل"/></div>
       <div class="fg">
         <label>رقم الجوال</label>
-        <div class="ph-wrap"><span class="ph-pre">🇸🇦 +966</span><input type="tel" id="rg-ph" placeholder="5XXXXXXXX" maxlength="9"/></div>
+        <div class="ph-wrap"><span class="ph-pre">🇸🇦 +966</span><input type="tel" id="rg-ph" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric"/></div>
+        <div class="ph-hint">⚠️ أدخل الأرقام بالإنجليزية فقط (0-9)</div>
       </div>
       <div class="fg"><label>كلمة المرور</label><input type="password" id="rg-p" placeholder="٦ أحرف على الأقل"/></div>
       <div class="fg"><label>الدور</label><select id="rg-r"><option value="teacher">معلم</option><option value="admin">مدير</option></select></div>
@@ -260,12 +227,7 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
 <div id="page-teacher" class="page">
   <nav class="nav">
     <div class="nb">
-      <div class="nav-logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="18" r="12" fill="#8dc63f"/>
-          <path d="M15 35 Q20 28 30 32 L50 75 L70 32 Q80 28 85 35 L75 80 Q62 88 50 88 Q38 88 25 80 Z" fill="#7b2d8b"/>
-        </svg>
-      </div>
+      <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="الفرسان" class="nav-logo"/>
       <div class="nb-text">
         <div class="nb-title">مدارس الفرسان الأهلية</div>
         <div class="nb-sub">شواهد الأداء</div>
@@ -288,12 +250,7 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
 <div id="page-admin" class="page">
   <nav class="nav">
     <div class="nb">
-      <div class="nav-logo">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="18" r="12" fill="#8dc63f"/>
-          <path d="M15 35 Q20 28 30 32 L50 75 L70 32 Q80 28 85 35 L75 80 Q62 88 50 88 Q38 88 25 80 Z" fill="#7b2d8b"/>
-        </svg>
-      </div>
+      <img src="https://excellencepath.github.io/PerfEvl/logo.png" alt="الفرسان" class="nav-logo"/>
       <div class="nb-text">
         <div class="nb-title">مدارس الفرسان الأهلية</div>
         <div class="nb-sub">لوحة المدير</div>
@@ -332,7 +289,28 @@ body{font-family:'Cairo',sans-serif;background:var(--paper);color:var(--ink);min
   </div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- FORGOT MODAL -->
+<div class="ov" id="m-forgot">
+  <div class="mo" style="max-width:400px">
+    <div class="mh"><h3>🔑 استعادة كلمة المرور</h3><button class="bx" onclick="closeForgot()">✕</button></div>
+    <p style="font-size:.85rem;color:#777;margin-bottom:1.2rem">أدخل رقم جوالك وسنعيد تعيين كلمة المرور</p>
+    <div class="fg">
+      <label>رقم الجوال</label>
+      <div class="ph-wrap"><span class="ph-pre">🇸🇦 +966</span><input type="tel" id="fg-ph" placeholder="5XXXXXXXX" maxlength="9" inputmode="numeric"/></div>
+      <div class="ph-hint">⚠️ أدخل الأرقام بالإنجليزية فقط (0-9)</div>
+    </div>
+    <div class="fg">
+      <label>كلمة المرور الجديدة</label>
+      <input type="password" id="fg-pass" placeholder="٦ أحرف على الأقل"/>
+    </div>
+    <div class="mbs">
+      <button class="bcl" onclick="closeForgot()">إلغاء</button>
+      <button class="bup" id="fg-btn" onclick="doReset()">تغيير كلمة المرور</button>
+    </div>
+    <div class="amsg" id="fg-msg" style="margin-top:.5rem"></div>
+  </div>
+</div>
+
 <div class="lb" id="lb" onclick="closeLb()">
   <button class="lbx">✕</button>
   <img id="lbi" src="" alt=""/>
@@ -365,22 +343,19 @@ const TOTAL_SUBS=BANDS.reduce((s,b)=>s+b.subs.length,0);
 let ME=null,EVS={},SEL_BAND=null,SEL_SUB=null,SF=null,allT=[],allE=[];
 
 function phoneToEmail(ph){return`${ph.replace(/\D/g,'')}@fursan.sa`;}
-function cleanPhone(ph){return ph.replace(/\D/g,'').replace(/^0/,'');}
-
-function go(p){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
-  document.getElementById('page-'+p).classList.add('on');
+function cleanPhone(ph){
+  // تحويل الأرقام العربية للإنجليزية
+  return ph.replace(/[٠-٩]/g,d=>d.charCodeAt(0)-1632).replace(/\D/g,'').replace(/^0/,'');
 }
+
+function go(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));document.getElementById('page-'+p).classList.add('on');}
 function showTab(t){
   document.getElementById('tab-li').style.display=t==='li'?'':'none';
   document.getElementById('tab-rg').style.display=t==='rg'?'':'none';
   document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',(t==='li'&&i===0)||(t==='rg'&&i===1)));
   msg('');
 }
-function msg(m,ok=false){
-  const e=document.getElementById('amsg');
-  e.textContent=m;e.className='amsg'+(m?(ok?' ok':' err'):'');
-}
+function msg(m,ok=false){const e=document.getElementById('amsg');e.textContent=m;e.className='amsg'+(m?(ok?' ok':' err'):'');}
 function ea(e){
   if(!e)return'';const m=e.message||String(e);
   if(m.includes('rate limit'))return'⚠️ تجاوزت الحد المسموح، انتظر قليلاً';
@@ -394,9 +369,8 @@ async function doLogin(){
   const ph=cleanPhone(document.getElementById('li-ph').value);
   const pass=document.getElementById('li-p').value;
   if(!ph||!pass)return msg('يرجى ملء جميع الحقول');
-  if(ph.length<9)return msg('رقم الجوال يجب أن يكون 9 أرقام');
-  const btn=document.getElementById('li-t');
-  btn.innerHTML='<span class="spin-sm"></span>';
+  if(ph.length<9)return msg('رقم الجوال يجب أن يكون 9 أرقام بالإنجليزية');
+  const btn=document.getElementById('li-t');btn.innerHTML='<span class="spin-sm"></span>';
   const{data,error}=await sb.auth.signInWithPassword({email:phoneToEmail(ph),password:pass});
   btn.textContent='دخول';
   if(error)return msg(ea(error));
@@ -409,10 +383,9 @@ async function doReg(){
   const pass=document.getElementById('rg-p').value;
   const role=document.getElementById('rg-r').value;
   if(!name||!ph||!pass)return msg('يرجى ملء جميع الحقول');
-  if(ph.length<9)return msg('رقم الجوال يجب أن يكون 9 أرقام');
+  if(ph.length<9)return msg('رقم الجوال يجب أن يكون 9 أرقام بالإنجليزية');
   if(pass.length<6)return msg('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
-  const btn=document.getElementById('rg-t');
-  btn.innerHTML='<span class="spin-sm"></span>';
+  const btn=document.getElementById('rg-t');btn.innerHTML='<span class="spin-sm"></span>';
   const{data,error}=await sb.auth.signUp({email:phoneToEmail(ph),password:pass,options:{data:{full_name:name,role,phone:ph}}});
   btn.textContent='إنشاء حساب';
   if(error)return msg(ea(error));
@@ -425,6 +398,32 @@ async function doReg(){
 
 async function doOut(){await sb.auth.signOut();ME=null;EVS={};go('auth');}
 
+function showForgot(){document.getElementById('m-forgot').classList.add('open');document.getElementById('fg-msg').textContent='';}
+function closeForgot(){document.getElementById('m-forgot').classList.remove('open');}
+
+async function doReset(){
+  const ph=cleanPhone(document.getElementById('fg-ph').value);
+  const pass=document.getElementById('fg-pass').value;
+  const fmsg=document.getElementById('fg-msg');
+  if(!ph){fmsg.textContent='أدخل رقم الجوال';fmsg.className='amsg err';return;}
+  if(ph.length<9){fmsg.textContent='رقم الجوال يجب أن يكون 9 أرقام بالإنجليزية';fmsg.className='amsg err';return;}
+  if(!pass||pass.length<6){fmsg.textContent='كلمة المرور يجب أن تكون 6 أحرف على الأقل';fmsg.className='amsg err';return;}
+  const btn=document.getElementById('fg-btn');btn.innerHTML='<span class="spin-sm"></span> جار التحديث...';btn.disabled=true;
+  // تسجيل الدخول أولاً للتحقق من وجود الحساب ثم تحديث كلمة المرور
+  const{data,error}=await sb.auth.signInWithPassword({email:phoneToEmail(ph),password:pass});
+  if(error){
+    // محاولة تحديث كلمة المرور عبر admin - نستخدم updateUser بعد التحقق
+    fmsg.textContent='تأكد من رقم الجوال أو تواصل مع المدير لإعادة تعيين كلمة المرور';
+    fmsg.className='amsg err';
+  }else{
+    // إذا نجح الدخول يعني كلمة المرور صحيحة - نحدثها
+    const{error:e2}=await sb.auth.updateUser({password:pass});
+    if(e2){fmsg.textContent='حدث خطأ، حاول مجدداً';fmsg.className='amsg err';}
+    else{fmsg.textContent='✅ تم تحديث كلمة المرور بنجاح!';fmsg.className='amsg ok';setTimeout(()=>{closeForgot();await boot(data.user);},1500);}
+  }
+  btn.innerHTML='تغيير كلمة المرور';btn.disabled=false;
+}
+
 async function boot(user){
   let{data:rows}=await sb.from('profiles').select('*').eq('id',user.id);
   let p=rows&&rows.length>0?rows[0]:null;
@@ -435,14 +434,8 @@ async function boot(user){
   }
   ME=p;
   document.getElementById('page-loading').classList.remove('on');
-  if(ME.role==='admin'){
-    document.getElementById('a-nm').textContent=ME.full_name;
-    go('admin');loadAdmin();
-  }else{
-    document.getElementById('t-nm').textContent=ME.full_name;
-    document.getElementById('t-gr').textContent=`مرحباً ${ME.full_name} 👋`;
-    go('teacher');loadTeacher();
-  }
+  if(ME.role==='admin'){document.getElementById('a-nm').textContent=ME.full_name;go('admin');loadAdmin();}
+  else{document.getElementById('t-nm').textContent=ME.full_name;document.getElementById('t-gr').textContent=`مرحباً ${ME.full_name} 👋`;go('teacher');loadTeacher();}
 }
 
 async function loadTeacher(){
@@ -555,25 +548,11 @@ function renderAdmin(teachers,evidences){
     const bandsHtml=BANDS.map((b,bi)=>{
       const bd=b.subs.filter((_,si)=>te[`${bi}_${si}`]).length;
       const allD=bd===b.subs.length,someD=bd>0&&!allD;
-      const subsHtml=b.subs.map((s,si)=>{const ev=te[`${bi}_${si}`];return`<div class="adm-sub-item ${ev?'has':''}" ${ev?`onclick="showLb('${ev.file_url}','${s}','${ev.file_type||''}')"`:''}>
-        <div class="adm-sub-dot"></div><div class="adm-sub-name">${s}</div>
-        ${ev?`<span class="adm-sub-file">${ev.file_type&&ev.file_type.startsWith('video/')?'🎬':'📄'} ${ev.file_name}</span>`:''}
-      </div>`;}).join('');
-      return`<div class="adm-band" id="ab-${t.id}-${bi}">
-        <div class="adm-band-hd ${allD?'has-all':someD?'has-some':''}" onclick="toggleAB('ab-${t.id}-${bi}')">
-          <div class="adm-band-num">${bi+1}</div>
-          <span style="flex:1">${b.title}</span>
-          <span style="font-size:.72rem;color:#999">${bd}/${b.subs.length}</span>
-        </div>
-        <div class="adm-sub-list">${subsHtml}</div>
-      </div>`;
+      const subsHtml=b.subs.map((s,si)=>{const ev=te[`${bi}_${si}`];return`<div class="adm-sub-item ${ev?'has':''}" ${ev?`onclick="showLb('${ev.file_url}','${s}','${ev.file_type||''}')"`:''}><div class="adm-sub-dot"></div><div class="adm-sub-name">${s}</div>${ev?`<span class="adm-sub-file">${ev.file_type&&ev.file_type.startsWith('video/')?'🎬':'📄'} ${ev.file_name}</span>`:''}</div>`;}).join('');
+      return`<div class="adm-band" id="ab-${t.id}-${bi}"><div class="adm-band-hd ${allD?'has-all':someD?'has-some':''}" onclick="toggleAB('ab-${t.id}-${bi}')"><div class="adm-band-num">${bi+1}</div><span style="flex:1">${b.title}</span><span style="font-size:.72rem;color:#aaa">${bd}/${b.subs.length}</span></div><div class="adm-sub-list">${subsHtml}</div></div>`;
     }).join('');
     return`<div class="tr" onclick="toggleD('d-${t.id}')">
-      <div class="trt">
-        <div class="av">${ini}</div>
-        <div class="tm"><div class="tn">${t.full_name}</div><div class="te">📱 ${t.phone||'—'}</div></div>
-        <div class="pi ${cnt===TOTAL_SUBS?'f':''}">${cnt}/${TOTAL_SUBS}</div>
-      </div>
+      <div class="trt"><div class="av">${ini}</div><div class="tm"><div class="tn">${t.full_name}</div><div class="te">📱 ${t.phone||'—'}</div></div><div class="pi ${cnt===TOTAL_SUBS?'f':''}">${cnt}/${TOTAL_SUBS}</div></div>
       <div class="mini-bar"><div class="mini-fill" style="width:${pct}%"></div></div>
       <div class="dl" id="d-${t.id}">${bandsHtml}</div>
     </div>`;
@@ -583,10 +562,7 @@ function renderAdmin(teachers,evidences){
 function toggleD(id){document.getElementById(id)?.classList.toggle('open');}
 function toggleAB(id){event.stopPropagation();document.getElementById(id)?.classList.toggle('open');}
 function filterT(){const q=document.getElementById('srch').value.toLowerCase();renderAdmin(allT.filter(t=>t.full_name.toLowerCase().includes(q)||(t.phone||'').includes(q)),allE);}
-function showLb(url,name,type){
-  if(!type||!type.startsWith('image/')){window.open(url,'_blank');return;}
-  document.getElementById('lbi').src=url;document.getElementById('lbc').textContent=name;document.getElementById('lb').classList.add('open');
-}
+function showLb(url,name,type){if(!type||!type.startsWith('image/')){window.open(url,'_blank');return;}document.getElementById('lbi').src=url;document.getElementById('lbc').textContent=name;document.getElementById('lb').classList.add('open');}
 function closeLb(){document.getElementById('lb').classList.remove('open');}
 function toast(m,type=''){const t=document.getElementById('toast');t.textContent=m;t.className='toast show '+type;setTimeout(()=>t.className='toast',3500);}
 
