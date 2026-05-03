@@ -567,9 +567,21 @@ function closeLb(){document.getElementById('lb').classList.remove('open');}
 function toast(m,type=''){const t=document.getElementById('toast');t.textContent=m;t.className='toast show '+type;setTimeout(()=>t.className='toast',3500);}
 
 (async()=>{
-  const{data:{session}}=await sb.auth.getSession();
-  if(session?.user){await boot(session.user);}
-  else{document.getElementById('page-loading').classList.remove('on');go('auth');}
+  // timeout بعد 5 ثواني
+  const timeout = setTimeout(()=>{
+    document.getElementById('page-loading').classList.remove('on');
+    go('auth');
+  }, 5000);
+  try{
+    const{data:{session}}=await sb.auth.getSession();
+    clearTimeout(timeout);
+    if(session?.user){await boot(session.user);}
+    else{document.getElementById('page-loading').classList.remove('on');go('auth');}
+  }catch(e){
+    clearTimeout(timeout);
+    document.getElementById('page-loading').classList.remove('on');
+    go('auth');
+  }
 })();
 </script>
 </body>
