@@ -259,7 +259,14 @@ body{font-family:"Cairo",sans-serif;background:var(--paper);color:var(--ink);min
           <button class="eye-btn" type="button" onclick="toggleEye('rg-p',this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
         </div>
       </div>
-      <div class="fg"><label>الدور</label><select id="rg-r"><option value="teacher">معلم</option><option value="admin">مدير</option></select></div>
+      <div class="fg"><label>الدور</label><select id="rg-r" onchange="toggleAdminCode()"><option value="teacher">معلم</option><option value="admin">مدير</option></select></div>
+      <div class="fg" id="admin-code-wrap" style="display:none">
+        <label>رمز المدير</label>
+        <div class="pw-wrap">
+          <input type="password" id="admin-code" placeholder="أدخل رمز المدير"/>
+          <button class="eye-btn" type="button" onclick="toggleEye('admin-code',this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </div>
+      </div>
       <button class="btn-m" onclick="doReg()"><span id="rg-t">إنشاء حساب</span></button>
     </div>
     <div class="amsg" id="amsg"></div>
@@ -364,6 +371,12 @@ function cleanPhone(ph){return ph.replace(/[٠-٩]/g,d=>d.charCodeAt(0)-1632).re
 
 function go(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));document.getElementById('page-'+p).classList.add('on');}
 
+function toggleAdminCode(){
+  const role=document.getElementById('rg-r').value;
+  document.getElementById('admin-code-wrap').style.display=role==='admin'?'':'none';
+  if(role!=='admin')document.getElementById('admin-code').value='';
+}
+
 function toggleEye(inputId,btn){
   const inp=document.getElementById(inputId);
   const isPass=inp.type==='password';
@@ -407,6 +420,10 @@ async function doReg(){
   const pass=document.getElementById('rg-p').value;
   const role=document.getElementById('rg-r').value;
   if(!name||!ph||!pass)return msg('يرجى ملء جميع الحقول');
+  if(role==='admin'){
+    const code=document.getElementById('admin-code').value;
+    if(code!=='Boss21426')return msg('رمز المدير غير صحيح');
+  }
   if(ph.length<9)return msg('رقم الجوال يجب أن يكون 9 أرقام');
   if(pass.length<6)return msg('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
   const btn=document.getElementById('rg-t');btn.innerHTML='<span class="spin-sm"></span>';
