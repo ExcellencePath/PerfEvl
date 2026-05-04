@@ -510,12 +510,12 @@ function openUp(bi,si){
     fpa.innerHTML=`<div class="current-file">
       ${isImg?`<img src="${ev.file_url}" alt=""/>`:'<div style="width:60px;height:60px;background:var(--cream);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1.5rem">📄</div>'}
       <div class="cf-info">
-        <div style="font-size:.78rem;font-weight:700;color:var(--green)">✅ تم الرفع</div>
+        <div style="font-size:.78rem;font-weight:700;color:var(--green)">تم الرفع</div>
         <input class="cf-name-input" id="cf-name" value="${ev.file_name}" placeholder="اسم الملف"/>
         <div class="cf-actions">
-          <button class="cf-del" onclick="deleteEv(${bi},${si})">🗑 حذف</button>
-          <button style="background:#e8f5e9;color:var(--green);border:none;border-radius:6px;padding:.3rem .7rem;font-family:Cairo,sans-serif;font-size:.75rem;cursor:pointer;font-weight:600" onclick="saveFileName(${bi},${si})">💾 حفظ الاسم</button>
-          ${isImg?`<button style="background:#e3f2fd;color:#1565c0;border:none;border-radius:6px;padding:.3rem .7rem;font-family:Cairo,sans-serif;font-size:.75rem;cursor:pointer;font-weight:600" onclick="showLb('${ev.file_url}','${BANDS[bi].subs[si]}','${ev.file_type||''}')">👁 معاينة</button>`:''} 
+          <button class="cf-del" onclick="deleteEv(${bi},${si})">حذف</button>
+          <button style="background:#e8f5e9;color:var(--green);border:none;border-radius:6px;padding:.3rem .7rem;font-family:Cairo,sans-serif;font-size:.75rem;cursor:pointer;font-weight:600" onclick="saveFileName(${bi},${si})">حفظ الاسم</button>
+          ${isImg?`<button style="background:#e3f2fd;color:#1565c0;border:none;border-radius:6px;padding:.3rem .7rem;font-family:Cairo,sans-serif;font-size:.75rem;cursor:pointer;font-weight:600" onclick="showLb('${ev.file_url}','${BANDS[bi].subs[si]}','${ev.file_type||''}')">معاينة</button>`:''} 
         </div>
       </div>
     </div>
