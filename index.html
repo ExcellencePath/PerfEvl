@@ -665,7 +665,7 @@ function renderAdmin(teachers,evidences,reviews){
     return`<div class="tr" onclick="toggleD('d-${t.id}')">
       <div class="trt">
         <div class="av">${ini}</div>
-        <div class="tm"><div class="tn">${t.full_name}</div><div class="te">📱 ${t.phone||'—'}</div></div>
+        <div class="tm"><div class="tn">${t.full_name}</div></div>
         <div class="pi ${cnt===TOTAL_SUBS?'f':''}">${cnt}/${TOTAL_SUBS}</div>
       </div>
       <div class="mini-bar"><div class="mini-fill" style="width:${pct}%"></div></div>
